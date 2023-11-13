@@ -3,9 +3,7 @@
 ### BackEnd: Firebase realtime database
 
 ### Demo: https://todo-list-1b479.web.app/
-
 ### GitLab: https://gitlab.com/work595/todo
-### GitHub: https://github.com/dstrizhakov/todo
 
 
 ## Getting Started with Create React App
