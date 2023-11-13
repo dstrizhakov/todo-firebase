@@ -1,0 +1,163 @@
+.App {
+  text-align: center;
+  margin: 0 auto;
+  background-color: #282c34;
+  min-height: 100vh;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  h1 {
+    font-size: calc(24px + 2vmin);
+    margin: 15px 0;
+    letter-spacing: 1px;
+  }
+}
+.App-body {
+  margin: 0 auto;
+  max-width: 800px;
+  color: white;
+  .App-form {
+    overflow: hidden;
+    background-color: rgba(65, 79, 114, 0.29);
+    padding: 10px;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    textarea, input {
+      padding: 10px;
+      width: 50vw;
+      border-radius: 8px;
+    }
+    .form-data {
+      display: flex;
+      max-width: 650px;
+      align-items: center;
+      .form-files{
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+      }
+      input {
+      }
+    }
+
+    button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 14px;
+    }
+  }
+}
+.file {
+  display: inline-flex;
+  align-items: center;
+  max-height: 25px;
+  background-color: #3473ff;
+  margin: 5px;
+
+  a {
+    border: 1px solid white;
+    padding: 2px;
+    color: white;
+  }
+  p{
+    cursor: pointer;
+    padding: 2px;
+    border: 1px solid white;
+  }
+}
+.todolist {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column-reverse;
+
+}
+.todo {
+  border: 1px solid white;
+  background-color: rgba(65, 79, 114, 0.29);
+  margin-bottom: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  .todo-main {
+    width: 50%;
+    text-align: left;
+    .todo-title {
+      text-align: center;
+    }
+    .todo-timestamp{
+      font-size: 12px;
+      p {
+        margin: 3px;
+      }
+    }
+  }
+  .todo-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    .red{
+      color: #fa0000;
+      font-size: 12px;
+    }
+    .yellow{
+      color: #ffe641;
+    }
+    .green{
+      color: #00ff00;
+    }
+  }
+  .todo-control {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    button{
+      min-width: 100px;
+      padding: 10px;
+    }
+  }
+}
+.todo-edit {
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  background-color: rgb(35, 47, 70);
+  .edit-data {
+    display: flex;
+    flex-direction: column;
+  }
+  .edit-form {
+    padding: 10px;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    textarea, input {
+      width: 30vw;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 14px;
+    }
+  }
+}
+
+

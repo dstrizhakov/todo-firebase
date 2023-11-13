@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/Todo.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/Todo.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import File from "./File";
+/**
+ * @typedef {Object} deadline - object UT timestamp
+ * @property {number} seconds - UT seconds time
+ * @property {number} nanoseconds - UT nanoseconds
+ */
+/**
+ * @typedef {Object} created - object UT timestamp
+ * @property {number} seconds - UT seconds time
+ * @property {number} nanoseconds - UT nanoseconds
+ */
+/**
+ * @typedef {Object} todo - todo item
+ * @property {number} id - todo id
+ * @property {string} todo - todo title
+ * @property {string} details - todo details
+ * @property {boolean} isdone - todo status(in progress/done)
+ * @property {string} fileRef - file path in database
+ * @property {string} files - file url
+ * @property {deadline} deadline - deadline object UT timestamp
+ * @property {created} created - created object UT timestamp
+ *
+ */
+/**
+ * Component for showing todo item
+ * @component
+ * @param {Object} props component props object
+ * @param {todo} props.todo - todo item
+ * @param {function} props.deleteTodo - function delete todo
+ * @param {function} props.toggleComplete - function toggle complete
+ * @param {function} props.editCurrentTodo - function edit current todo
+ * @param {function} props.deleteFile - function delete file from todo
+ * @return {JSX.Element}
+ */
+const Todo = ( {todo, deleteTodo, toggleComplete, editCurrentTodo, deleteFile} ) => {
+
+    return (
+        &lt;>
+        &lt;div className="todo">
+            &lt;div className="todo-main">
+                &lt;h2 className="todo-title">{todo.todo}&lt;/h2>
+                &lt;p>{todo.details}&lt;/p>
+                &lt;div className="todo-timestamp">
+                    {todo.created
+                        ?&lt;p>Created: {new Date(todo.created.seconds*1000).toString()}&lt;/p>
+                        :&lt;p>Created: no date&lt;/p>
+                    }
+                    {todo.deadline
+                        ?&lt;p>Deadline: {new Date(todo.deadline.seconds*1000).toString()}&lt;/p>
+                        :&lt;p>Deadline: no date&lt;/p>
+                    }
+
+                &lt;/div>
+            &lt;/div>
+            &lt;div className="todo-files">
+                {todo.files
+                    ? &lt;File edit={false} deleteFile={deleteFile} url={todo.files} name="file"/>
+                    : &lt;p>&lt;/p>
+                }
+            &lt;/div>
+            &lt;div className="todo-progress">
+                &lt;div >{todo.isdone
+                ?&lt;p className="green">Done&lt;/p>
+                :&lt;p className="yellow">In progress&lt;/p>
+                }
+                    {todo.deadline&amp;&amp;todo.created
+                        ? (todo.deadline.seconds - todo.created.seconds &lt; 0)&amp;&amp;&lt;p className="red">Task expired!&lt;/p>
+                        : &lt;p>&lt;/p>
+                    }
+                &lt;/div>
+
+            &lt;/div>
+            &lt;div className="todo-control">
+                &lt;button onClick={() => deleteTodo(todo.id)}>Delete&lt;/button>
+                &lt;button onClick={(e) => editCurrentTodo(todo)}>Edit todo&lt;/button>
+                &lt;button onClick={() => toggleComplete(todo)}>{todo.isdone?"In progress":"Done"}&lt;/button>
+            &lt;/div>
+        &lt;/div>
+        &lt;/>
+    );
+};
+
+export default Todo;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#File">File</a></li><li><a href="global.html#Todo">Todo</a></li><li><a href="global.html#TodoList">TodoList</a></li><li><a href="global.html#addTodo">addTodo</a></li><li><a href="global.html#deleteFile">deleteFile</a></li><li><a href="global.html#deleteTodo">deleteTodo</a></li><li><a href="global.html#editCurrentTodo">editCurrentTodo</a></li><li><a href="global.html#handleChangeFile">handleChangeFile</a></li><li><a href="global.html#toDate">toDate</a></li><li><a href="global.html#toTimestamp">toTimestamp</a></li><li><a href="global.html#toggleComplete">toggleComplete</a></li><li><a href="global.html#updateTodo">updateTodo</a></li><li><a href="global.html#uploadFile">uploadFile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Mon Nov 21 2022 16:19:22 GMT+0300 (GMT+03:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
